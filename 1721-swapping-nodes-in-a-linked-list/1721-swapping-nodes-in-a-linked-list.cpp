@@ -15,18 +15,17 @@ public:
         ListNode *p2=head;
         ListNode *p3=head;
         int len=0;int c=0;
-        while(c++ < k-1){
-            p2=p2->next;
-
-        }
-         c=0;
         while(p3 != NULL){
             len++;
             p3=p3->next;
         }
         len=len-k;
-        while(c++ < len){
-            p1=p1->next;
+        while(c<k-1 || c<len){
+            if(c <k-1)p2=p2->next;
+             if(c <len){p1=p1->next;
+                         }
+            ++c;
+            
         }
         swap(p1->val,p2->val);
         return head;
