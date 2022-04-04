@@ -13,21 +13,17 @@ public:
     ListNode* swapNodes(ListNode* head, int k) {
         ListNode *p1=head;
         ListNode *p2=head;
-        ListNode *p3=head;
-        int len=0;int c=0;
-        while(p3 != NULL){
-            len++;
-            p3=p3->next;
+        ListNode *p3;
+        while(--k){
+            if(k){p1=p1->next;}
         }
-        len=len-k;
-        while(c<k-1 || c<len){
-            if(c <k-1)p2=p2->next;
-             if(c <len){p1=p1->next;
-                         }
-            ++c;
-            
+            p3=p1;
+            p1=p1->next;
+        while(p1){
+            p1=p1->next;
+            p2=p2->next;
         }
-        swap(p1->val,p2->val);
+        swap(p3->val,p2->val);
         return head;
     }
 };
