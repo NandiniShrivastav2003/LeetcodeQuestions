@@ -11,24 +11,26 @@
  */
 class Solution {
 public:
-      vector<int>res; 
+   
+     int o=INT_MAX;
+    TreeNode *prev=NULL;
     void inorder(TreeNode *root){
         if(root == NULL){return ;}
        
         inorder(root->left);
-        res.push_back(root->val);
+        if(prev){
+        o=min(o,(abs(prev->val-root->val))
+              );
+        }
+        prev=root;
         inorder(root->right);
     }
     
     int getMinimumDifference(TreeNode* root) {
     
         inorder(root);
-        int o=INT_MAX;
-        for(int i=0;i<res.size()-1;i++){
-            
-                o=min(o,(res[i+1]-res[i]));
-            
-        }
+       
+        
         return o;
     }
 };
