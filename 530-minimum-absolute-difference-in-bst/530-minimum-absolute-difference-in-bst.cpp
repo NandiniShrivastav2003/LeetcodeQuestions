@@ -24,10 +24,10 @@ public:
     
         inorder(root);
         int o=INT_MAX;
-        for(int i=0;i<res.size();i++){
-            for(int j=i+1;j<res.size();j++){
-                o=min(o,abs(res[i]-res[j]));
-            }
+        for(int i=0;i<res.size()-1;i++){
+            
+                o=min(o,(res[i+1]-res[i]));
+            
         }
         return o;
     }
