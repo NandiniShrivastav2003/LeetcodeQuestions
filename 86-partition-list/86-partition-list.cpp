@@ -15,17 +15,17 @@ public:
         ListNode *a=p1;
           ListNode *p2=new ListNode(-1);
         ListNode *b=p2;
-        ListNode *temp=head;
-        while(temp != NULL){
-            if(temp->val < x){
-               p1->next=temp;
+      
+        while(head != NULL){
+            if(head->val < x){
+               p1->next=head;
                p1=p1->next;
             }
             else{
-                p2->next=temp;
+                p2->next=head;
                 p2=p2->next;
             }
-            temp=temp->next;
+            head=head->next;
         }
         p1->next=b->next;
         p2->next=NULL;
