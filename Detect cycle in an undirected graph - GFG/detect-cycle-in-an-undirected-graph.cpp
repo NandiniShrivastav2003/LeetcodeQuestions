@@ -8,7 +8,7 @@ class Solution {
     // Function to detect cycle in an undirected graph.
     bool dfs(vector<int>adj[],bool visited[],int parent,int u){
         visited[u]=true;
-        for(auto i:adj[u]){
+        for(int i:adj[u]){
             if(visited[i] == false){
                if( dfs(adj,visited,u,i)== true){
                     return true;
