@@ -1,24 +1,34 @@
 class Solution {
 public:
-    int lengthOfLIS(vector<int>& a) {
-       
-    int n=a.size();
-        int lis[n];
-        lis[0]=1;
-        for(int i=1;i<n;i++){
-            lis[i]=1;
-            for(int j=0;j<i;j++){
-                if(a[j] < a[i]){
-                    lis[i]=max(lis[i],lis[j]+1);
-                }
+    //O(nlogn) solution using binary search and using ceil find function
+    int findceil(int tail[],int l,int r,int x){
+        while(r>l){
+            int m=l+(r-l)/2;
+            if(tail[m] >= x){
+                r=m;
+            }
+            else{
+                
+                l=m+1;
             }
             
         }
-        int res=lis[0];
-        for(int i=1;i<n;i++){
-            res=max(res,lis[i]);
+        return r;
+    }
+    int lengthOfLIS(vector<int>& nums) {
+        int tail[nums.size()];
+        int len=1;
+        tail[0]=nums[0];
+        for(int i=1;i<nums.size();i++){
+            if(nums[i] > tail[len-1]){
+                tail[len]=nums[i];
+                len++;
+            }
+            else{
+                int c=findceil(tail,0,len-1,nums[i]);
+                tail[c]=nums[i];
+            }
         }
-        return res;
-    
+        return len;
     }
 };
