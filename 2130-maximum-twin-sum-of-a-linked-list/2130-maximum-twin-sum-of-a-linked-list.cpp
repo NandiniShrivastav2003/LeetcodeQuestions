@@ -1,40 +1,36 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
 class Solution {
 public:
     int pairSum(ListNode* head) {
-        ListNode* temp=head;
-        ListNode *curr=head;
-        int len=0;
-        while(temp != NULL){
-            len++;
-            temp=temp->next;
+        ListNode* slow=head;
+        ListNode* fast=head;
+        while(fast && fast->next){
+            fast=fast->next->next;
+            slow=slow->next;
         }
-        len=len/2;
-        int i=0;
-        while(i<len-1){
-            i++;
-            curr=curr->next;
-        }
+         ListNode *newNode;
         ListNode *prev=NULL;
-        ListNode *fast=curr->next;
-        while(fast != NULL){
-            ListNode*temp=fast->next;
-            fast->next=prev;
-            prev=fast;
-            fast=temp;
+        while(slow){
+           newNode=slow->next;
+               slow->next=prev;
+            prev=slow;
+            slow=newNode;
         }
-        curr->next=prev;
-        int sum=INT_MIN;
-        i=0;
-        temp=head;
-        while(i<len){
-            //cout<<curr->next->val<<" "<<temp->val<<endl;
-            sum=max(sum,(curr->next->val+temp->val));
-            temp=temp->next;
-            curr=curr->next;
-            i++;
-            
-            
-}
-        return sum;
+        int res=0;
+        while(prev){
+            res=max(res,head->val+prev->val);
+            head=head->next;
+            prev=prev->next;
+        }
+        return res;
     }
 };
