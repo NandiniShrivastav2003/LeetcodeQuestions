@@ -1,5 +1,6 @@
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
+        //time complexity:0(nlogn)
         int m=matrix.length;
         int n=matrix[0].length;
         int row=0;
