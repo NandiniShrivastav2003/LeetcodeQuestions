@@ -8,6 +8,7 @@ class Solution {
 public:
     string longestDiverseString(int a, int b, int c) {
         string res="";
+        //we make a max heap and take out two characters .
         priority_queue<pair<char,int>,vector<pair<char,int>>,compare>pq;
         if(a)pq.push(make_pair('a',a));
        if(b) pq.push(make_pair('b',b));
@@ -19,16 +20,18 @@ public:
             auto j=pq.top();
            
             pq.pop();
+            //if first element isgreater than 2 we add it to result
             if(i.second >= 2 ){
                  res+=(i.first);
                 res+=(i.first);
                 i.second = i.second-2;
             }
+            //else add one
             else{
                 res+=(i.first);
                  i.second = i.second-1;
             }
-           
+           //if second character is greater than 2 and we check one more condition if 2nd charcter length is greater than equal to first character length we add 2 characters otherwise 1.
             if(j.second >= 2 && j.second >= i.second){
                  res+=(j.first);
                       res+=(j.first);
