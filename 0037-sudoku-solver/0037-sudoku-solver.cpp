@@ -14,7 +14,7 @@ public:
         }
         //if(board[i][j] == '.'){
             for(char c='1';c<='9';c++){
-                if(isValid(board,i,j,c)){
+                if(safe(board,c,i,j)){
                     board[i][j]=c;
                     if(solve(board,i,j+1)){
                         return true;
@@ -26,25 +26,8 @@ public:
     
        // }
     }
-    bool isValid(vector<vector<char>>& board, int row, int col, char c) {
-    // row check
-    for(int i = 0; i < 9; i++) 
-		if(board[i][col] == c) 
-			return false;
-	// col check
-    for(int i = 0; i < 9; i++) 
-		if(board[row][i] == c) 
-			return false;
-    // box check
-    int x0 = (row/3) * 3, y0 = (col/3) * 3;
-    for(int i = 0; i < 3; i++) {
-        for(int j = 0; j < 3; j++) {
-            if(board[x0 + i][y0 + j] == c) return false;
-        }
-    }
-    return true;
-}
-    bool safe(vector<vector<char>>board,char c,int i,int j){
+
+    bool safe(vector<vector<char>>&board,char c,int i,int j){
         int nr=(i/3)*3;
         int nc=(j/3)*3;
      for(int x=0;x<9;x++){
@@ -63,7 +46,7 @@ public:
      
         for(int p=0;p<3;p++){
             for(int q=0;q<3;q++){
-                if(board[p][q] == c){
+                if(board[p+nr][q+nc] == c){
                     return false;
                 }
             }
