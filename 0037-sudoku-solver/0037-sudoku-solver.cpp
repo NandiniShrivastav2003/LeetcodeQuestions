@@ -44,9 +44,9 @@ public:
          
          
      
-        for(int p=0;p<3;p++){
-            for(int q=0;q<3;q++){
-                if(board[p+nr][q+nc] == c){
+        for(int p=nr;p<nr+3;p++){
+            for(int q=nc;q<nc+3;q++){
+                if(board[p][q] == c){
                     return false;
                 }
             }
