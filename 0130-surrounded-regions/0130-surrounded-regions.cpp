@@ -14,7 +14,7 @@ public:
     }
    void eraseIslands(vector<vector<char>>& grid, int i, int j) {
         int m = grid.size(), n = grid[0].size();
-        if (i < 0 || i >= m || j < 0 || j >= n || grid[i][j] != 'O') {
+        if (i < 0 || i == m || j < 0 || j == n || grid[i][j] != 'O') {
             return;
         }
         grid[i][j] = 'T';
