@@ -1,34 +1,40 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include <bits/stdc++.h>
 using namespace std;
 
- // } Driver Code Ends
+// } Driver Code Ends
 class Solution {
   public:
-    // Function to detect cycle in an undirected graph.
-    bool dfs(vector<int>adj[],bool visited[],int parent,int u){
-        visited[u]=true;
-        for(int i:adj[u]){
-            if(visited[i] == false){
-               if( dfs(adj,visited,u,i)== true){
-                    return true;
-                }
+    bool bfs(int v,vector<int>adj[],int vis[],int src){
+        queue<pair<int,int>>q;
+        q.push({src,-1});
+        vis[src]=1;
+        while(q.size()){
+        int node=q.front().first;
+        int parent=q.front().second;
+        q.pop();
+        for(auto curr:adj[node]){
+            if(vis[curr]  == 0){
+                vis[curr]=1;
+                q.push({curr,node});
             }
-                else if(i != parent){
-                    return true;
-                }
-            
+            else if(parent != curr){
+                return true;
+            }
+        }
         }
         return false;
     }
-    bool isCycle(int v, vector<int> adj[]) {
+    // Function to detect cycle in an undirected graph.
+    bool isCycle(int V, vector<int> adj[]) {
         // Code here
-        bool visited[v]={0};
-        for(int i=0;i<v;i++){
-            if(visited[i] == false){
-            if(dfs(adj,visited,-1,i) == true){
-                return true;
-            }
+        int vis[V]={0};
+        for(int i=0;i<V;i++){
+            
+            if(!vis[i]){
+                if(bfs(V,adj,vis,i)){
+                    return true;
+                }
             }
         }
         return false;
@@ -36,7 +42,7 @@ class Solution {
     }
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 int main() {
     int tc;
     cin >> tc;
@@ -58,4 +64,5 @@ int main() {
             cout << "0\n";
     }
     return 0;
-}  // } Driver Code Ends
+}
+// } Driver Code Ends
