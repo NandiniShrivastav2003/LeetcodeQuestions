@@ -12,12 +12,13 @@ public:
       
         if(sum == targetSum && root->left == NULL && root->right ==NULL){
             res.push_back(temp);
-            
+           
         }
-        else{
+       
         allPaths(root->left,targetSum,sum);
         allPaths(root->right,targetSum,sum);
-        }
+       
+      //  cout<<temp.back()<<endl;
         temp.pop_back();
         
       
