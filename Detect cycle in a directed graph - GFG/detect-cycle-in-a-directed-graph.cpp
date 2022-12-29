@@ -1,38 +1,45 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include <bits/stdc++.h>
 using namespace std;
 
- // } Driver Code Ends
+// } Driver Code Ends
 class Solution {
   public:
     // Function to detect cycle in a directed graph.
-    bool dfsrec(vector<int>adj[],bool vis[],bool recst[],int i){
-        vis[i]=true;
-        recst[i]=true;
-        for(int v:adj[i]){
-            if(vis[v] == false){
-                if(dfsrec(adj,vis,recst,v) == true){return true;}
-            }
-                else if(recst[v] == true){return true;}
-            
-        }
-        recst[i]=false;
-        return false;
-    }
-    bool isCyclic(int V, vector<int> adj[]) {
+    bool isCyclic(int v, vector<int> adj[]) {
         // code here
-        bool vis[V]={false};
-        bool recst[V]={false};
-        for(int i=0;i<V;i++){
-            if(vis[i] == false){
-                if(dfsrec(adj,vis,recst,i) == true){return true;}
+        vector<int>indeg(v,0);
+        queue<int>q;
+        for(int i=0;i<v;i++){
+            for(int x:adj[i]){
+                indeg[x]++;
             }
+        }
+        for(int i=0;i<v;i++){
+            if(indeg[i] == 0){
+                q.push(i);
+            }
+        }
+        vector<int>ans;
+        while(!q.empty()){
+            int u=q.front();
+            q.pop();
+            ans.push_back(u);
+            for(int v:adj[u]){
+                indeg[v]--;
+                if(indeg[v] == 0){
+                    q.push(v);
+                }
+            }
+        }
+        if(ans.size() < v){
+            return true;
         }
         return false;
     }
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 
 int main() {
 
@@ -56,4 +63,5 @@ int main() {
 
     return 0;
 }
-  // } Driver Code Ends
+
+// } Driver Code Ends
