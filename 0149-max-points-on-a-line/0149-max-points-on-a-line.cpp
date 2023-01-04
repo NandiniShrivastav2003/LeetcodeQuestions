@@ -20,7 +20,7 @@ public:
                         int x=points[k][0];
                         int y=points[k][1];
                         
-                           if((y2-y1)*(x-x1) == (x2-x1)*(y-y1)){
+                           if((y2-y1)*(x-x2) == (x2-x1)*(y-y2)){
                                total++;
                            }
                         }
