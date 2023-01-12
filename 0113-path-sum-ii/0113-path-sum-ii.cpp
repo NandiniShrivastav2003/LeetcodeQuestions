@@ -18,7 +18,7 @@ public:
         allPaths(root->left,targetSum,sum);
         allPaths(root->right,targetSum,sum);
        
-      //  cout<<temp.back()<<endl;
+      
         temp.pop_back();
         
       
