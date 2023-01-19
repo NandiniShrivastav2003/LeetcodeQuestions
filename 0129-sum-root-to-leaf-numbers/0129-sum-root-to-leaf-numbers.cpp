@@ -12,22 +12,21 @@
 class Solution {
 public:
     int ans=0;
-    void sumNode(TreeNode *root,string sum){
+    void sumans(TreeNode *root,int sum){
         if(root == NULL){
             return ;
         }
+        
         if(!root->left && !root->right){
-            sum+=to_string(root->val);
-            ans+=stoi(sum);
-            cout<<ans<<endl;
+           
+            ans+=(sum*10+root->val);
             return ;
         }
-
-        sumNode(root->left,sum+to_string(root->val));
-        sumNode(root->right,sum+to_string(root->val));
+        sumans(root->left,sum*10+(root->val));
+        sumans(root->right,sum*10+(root->val));
     }
     int sumNumbers(TreeNode* root) {
-        sumNode(root,"");
+      sumans(root,0); 
         return ans;
     }
 };
