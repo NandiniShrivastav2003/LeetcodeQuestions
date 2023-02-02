@@ -21,9 +21,10 @@ public:
          if(l == NULL && r == NULL && root->val == x) {
              return NULL;
          }
+        else{
         root->left=l;
         root->right=r;
-            
+        }
     return root;
         
     }
