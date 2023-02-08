@@ -1,17 +1,26 @@
 class Solution {
 public:
-  int jump(vector<int>& nums) {
-	int n = size(nums), i = 0, maxReachable = 0, lastJumpedPos = 0, jumps = 0;
-	while(lastJumpedPos < n - 1) {  // loop till last jump hasn't taken us till the end
-		maxReachable = max(maxReachable, i + nums[i]);  // furthest index reachable on the next level from current level
-		if(i == lastJumpedPos) {			  // current level has been iterated & maxReachable position on next level has been finalised
-			lastJumpedPos = maxReachable;     // so just move to that maxReachable position
-			jumps++;                          // and increment the level
-	// NOTE: jump^ only gets updated after we iterate all possible jumps from previous level
-	//       This ensures jumps will only store minimum jump required to reach lastJumpedPos
-		}            
-		i++;
-	}
-	return jumps;
-}
+   
+    int canjump(vector<int>&nums,int i,int c,vector<int>&dp){
+        if(i == nums.size()-1){
+            return 0;
+        }
+         if(i>=nums.size()){
+            return 0;
+        }
+      
+        if(dp[i] != 100001){
+            return dp[i];
+        }
+       for(int j=1;j<=nums[i];j++){
+           dp[i]=min(dp[i],1+canjump(nums,i+j,c,dp));
+       }
+        return dp[i];
+    }
+    int jump(vector<int>& nums) {
+        vector<int>dp(nums.size(),100001);
+       int x=canjump(nums,0,0,dp); 
+        return x;
+        
+    }
 };
