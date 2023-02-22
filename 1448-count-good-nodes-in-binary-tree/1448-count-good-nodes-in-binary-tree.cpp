@@ -18,27 +18,17 @@ public:
         if(root == NULL){
         return;
         }
-//     if(check > root->val){
-//         temp=check;
-//     }
-//     else{
-//         temp=root->val;
-// }
         int temp=max(check,root->val);
     
         if(temp == root->val){
+           
             count++;
         }
-      
-      //  prev=root->val;
-        preorder(root->left,max(root->val,check));
-        preorder(root->right,max(root->val,check));
+        preorder(root->left,temp);
+        preorder(root->right,temp);
     }
     int goodNodes(TreeNode* root) {
-           // int prev=root->val;
         preorder(root,root->val);
-        
-        
         return count;
     }
 };
