@@ -1,22 +1,38 @@
+
 class Solution {
 public:
-    int ans=0;
-    
-    void countPaths(TreeNode* root, set<int>s){
-        if(s.find(root->val)!=s.end()) s.erase(root->val);
-        else s.insert(root->val);
-        if(!root->left && !root->right) {
-            if(s.size()<=1) ans++;
-            return;
+   
+    int count=0;
+    void paths(TreeNode *root,set<int>m){
+       
+       
+       if(m.find(root->val) != m.end()){
+           m.erase(root->val);
+       }
+        else{
+            m.insert(root->val);
         }
-        if(root->left) countPaths(root->left,s);
-        if(root->right) countPaths(root->right,s);
-    }
-    
-    int pseudoPalindromicPaths (TreeNode* root) {
-       if(!root) return 0;
-        set<int> s;
-        countPaths(root,s);
-        return ans;
+        if(!root->left && !root->right){
+            if(m.size() <= 1){
+                count++;
+            }
+            if(m.find(root->val) != m.end()){
+                m.erase(root->val);
+            }
+            return ;
+        }
+       
+          
+  if(root->left){paths(root->left,m);}
+    if(root->right){paths(root->right,m);}
+ 
+}
+    int pseudoPalindromicPaths(TreeNode* root) {
+         set<int>m;
+        if(!root){
+            return 0;
+        }
+        paths(root,m);
+        return count;
     }
 };
