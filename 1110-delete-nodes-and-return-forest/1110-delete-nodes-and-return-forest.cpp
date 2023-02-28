@@ -31,7 +31,7 @@ public:
                    
             }
           root=NULL;
-           delete(root);
+         //  delete(root);
         }
     }
     vector<TreeNode*> delNodes(TreeNode* root, vector<int>& to_delete) {
