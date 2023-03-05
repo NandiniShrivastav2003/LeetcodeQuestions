@@ -17,9 +17,7 @@ public:
         pq.insert(0);
         vector<vector<int>>ans;
         int maxi=0;
-       sort(begin(data), end(data), [](const auto& a, const auto& b) {
-            return (a.first != b.first) ? a.first < b.first : a.second < b.second;
-        });
+       sort(begin(data), end(data));
        
         for(auto it:data){
              if(it.second < 0){
