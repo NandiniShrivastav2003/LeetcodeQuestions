@@ -5,11 +5,9 @@ public:
         right[0]=arr[0];
         int left[arr.size()+1];
         int n=arr.size();
-        int temp[arr.size()];
-        temp[0]=arr[0];
         int ans=0;
         for(int i=1;i<arr.size();i++){
-            temp[i]=arr[i];
+           
             right[i]=max(arr[i],right[i-1]);
         }
         left[arr.size()]=INT_MAX;
