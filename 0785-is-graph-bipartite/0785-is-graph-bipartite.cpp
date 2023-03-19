@@ -4,10 +4,15 @@ public:
        if(parent == -1){
            color[u]=1;
        }
+       else{
+            color[u]=~color[parent];
+       }
+           
+       
        
         for(auto v:graph[u]){
             if(color[v] == -1){
-               color[v]=~color[u];
+              
                 if(!dfs(graph,v,color,u)){
                     return false;
                 }
