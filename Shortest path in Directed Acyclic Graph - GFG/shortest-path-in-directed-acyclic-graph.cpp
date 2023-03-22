@@ -33,12 +33,16 @@ class Solution {
 	            dfs(i,vis,adj,st);
 	        }
 	    }
+	    vector<int>ed;
+	    for(int i=0;i<N;i++){
+	        ed.push_back(i);
+	    }
 	    vector<int>ans;
 	    vector<int>dist(N,1e9);
 	    dist[0]=0;
-	    while(!st.empty()){
-	        int node=st.top();
-	        st.pop();
+	   for(int i=0;i<N;i++){
+	        int node=i;
+	       // st.pop();
 	        for(auto it:adj[node]){
 	            int v=it.first;
 	            int wt=it.second;
