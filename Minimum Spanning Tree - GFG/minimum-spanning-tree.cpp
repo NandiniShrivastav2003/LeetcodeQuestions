@@ -1,9 +1,11 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include<bits/stdc++.h>
 using namespace std;
 
- // } Driver Code Ends
+// } Driver Code Ends
 
+
+    
 
 class Solution
 {
@@ -30,12 +32,12 @@ class Solution
     {
         // code here
          vector<bool>visited(v,false);
-    vector<int>parent(v);
+  //  vector<int>parent(v);
     vector<int> weight(v);
     for(int i=0;i<v;i++){
         weight[i]=INT_MAX;
     }
-    parent[0]=-1;
+  //  parent[0]=-1;
     weight[0]=0;
     for(int i=0;i<v;i++){
         int ans=getMin(weight,visited);
@@ -54,7 +56,8 @@ class Solution
 }
 };
 
-// { Driver Code Starts.
+
+//{ Driver Code Starts.
 
 
 int main()
@@ -85,4 +88,5 @@ int main()
     return 0;
 }
 
-  // } Driver Code Ends
+
+// } Driver Code Ends
