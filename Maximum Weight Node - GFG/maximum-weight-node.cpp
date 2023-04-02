@@ -10,28 +10,22 @@ class Solution
   public:
   int maxWeightCell(int N, vector<int> Edge)
   {
-      vector<int>adj[N];
-       vector<int>ans(N,0);
-       int mxweight=0;
-      for(int i=0;i<Edge.size();i++){
+      int res=0;
+      vector<int>ans(N);
+      for(int i=0;i<N;i++){
           if(Edge[i] == -1){
               continue;
           }
-         
           ans[Edge[i]]+=i;
-         
       }
-      int res=0;
+      int temp=0;
       for(int i=0;i<N;i++){
-          if(mxweight <= ans[i]){
-              mxweight=ans[i];
+          if(ans[i] >= temp){
+              temp=ans[i];
               res=i;
           }
       }
       return res;
-     
-   
-      
   }
 };
 
