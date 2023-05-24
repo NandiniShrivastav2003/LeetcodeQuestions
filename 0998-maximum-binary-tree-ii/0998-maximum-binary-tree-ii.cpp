@@ -4,16 +4,15 @@ public:
        if(root == NULL){
            return new TreeNode(x);
        }
-       
         if(root->val < x){
             TreeNode *temp=new TreeNode(x);
             temp->left=root;
             return temp;
         }
-     
+       
            root->right=build(root->right,x);
-     
-     
+       
+       
        return root;
        
     }
