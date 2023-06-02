@@ -11,7 +11,7 @@ public:
             while(!st.empty() && nums[st.top()] <= nums[i]){
                 st.pop();
             }
-            while(!st.empty() && st.top()-1>=0 && st.size()>=1 && mini[st.top()-1] < nums[i]){
+            while(!st.empty() && st.top()-1>=0  && mini[st.top()-1] < nums[i]){
                 return true;
             }
             st.push(i);
