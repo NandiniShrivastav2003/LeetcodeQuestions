@@ -42,7 +42,7 @@ public:
        
         helper(s,0,st,a);
         sort(ans.begin(),ans.end());
-        ans.erase(std::unique(ans.begin(),ans.end()),ans.end());
+        ans.erase(unique(ans.begin(),ans.end()),ans.end());
         
         return ans;
     }
