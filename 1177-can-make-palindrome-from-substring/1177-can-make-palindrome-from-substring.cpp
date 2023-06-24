@@ -13,13 +13,10 @@ public:
             int l=q[0];
             int r=q[1];
             int k=q[2];
-             int sum=0;
              int odd=0;
-             vector<int>count;
-           count=prefix[r+1];
+             vector<int>count=prefix[r+1];
           for(int i=0;i<26;i++){
                 count[i]-=prefix[l][i];
-                sum+=count[i];
                 odd+=(count[i]%2);
             }
           
