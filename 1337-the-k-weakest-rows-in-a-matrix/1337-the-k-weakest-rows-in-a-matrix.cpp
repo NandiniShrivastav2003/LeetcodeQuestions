@@ -1,9 +1,9 @@
 class Solution {
 public:
-   static bool cmp(pair<int,int>&A,pair<int,int>&B){
-       return A.first < B.first;
+//    static bool cmp(pair<int,int>&A,pair<int,int>&B){
+//        return A.first < B.first;
    
-    }
+//     }
     vector<int> kWeakestRows(vector<vector<int>>& mat, int k) {
         vector<pair<int,int>>ans;
         for(int i=0;i<mat.size();i++){
