@@ -24,6 +24,8 @@ public:
                 int ny=dy[i]+y;
                 
                 if(nx>=0 && ny>=0 && nx<n && ny<m ){
+                    //max lene ka matlba hai ki hum previusly visited cell pe ni jayge
+                //dry run on [[1,10,6,7,9,10,4,9]] for better understanding.
                     int temp=max(d,abs(heights[nx][ny]-heights[x][y]));
                     if(ans[nx][ny] > temp){
                     ans[nx][ny]=temp;
