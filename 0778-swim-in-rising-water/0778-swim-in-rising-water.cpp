@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //similar to path with minimum effort problem ,we have to make one chnage only in prev problem we maintain distance d = abs(mat[nx][ny]-mat[x][y]) here we have to find max value of a path from [0,0] to [m-1][n-1] which is minimum among all the paths so we will keep track of d=max(d,mat[nx][ny]);.
      typedef pair<int,pair<int, int>> pi;
     int swimInWater(vector<vector<int>>& heights) {
           int n=heights.size();
